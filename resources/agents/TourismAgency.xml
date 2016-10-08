@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+	<import resource="classpath:de/dailab/jiactng/protocol/conf/Protocol.xml" />
+
+	<bean name="TourismAgency" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="ProtocolTourismAgencyCA" />
+				<ref bean="TourismAgencyBean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+
+	<bean name="TourismAgencyParticipant" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="ProtocolTourismAgencyParticipantCA" />
+				<ref bean="TourismAgencyParticipantBean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+	
+		<bean name="TourismAgencyParticipant1" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="ProtocolTourismAgencyParticipantCA" />
+				<ref bean="TourismAgencyParticipantBean1" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+
+	<bean name="ProtocolTourismAgencyCA" parent="ProtocolManagementBean" singleton="false">
+		<property name="definedHandlers">
+			<list>
+				<map>
+					<entry key="protocolname" value="cnptest" />
+					<entry key="handlerclass" value="nenov.cs4027.assessment.tourismagency.TourismAgencyInitiatorCNP" />
+					<entry key="role" value="initiator" />
+					<entry key="timeout" value="600000" />
+					<entry key="businesslogicRef" value="nenov.cs4027.assessment.tourismagency.TourismAgency" />
+					<entry key="logLevel" value="INFO" />
+				</map>
+			</list>
+		</property>
+		<property name="logLevel" value="INFO" />
+	</bean>
+
+	<bean name="ProtocolTourismAgencyParticipantCA" parent="ProtocolManagementBean" singleton="false">
+		<property name="definedHandlers">
+			<list>
+				<map>
+					<entry key="protocolname" value="cnptest" />
+					<entry key="handlerclass" value="nenov.cs4027.assessment.tourismagency.TourismAgencyParticipantCNP" />
+					<entry key="role" value="participant" />
+					<entry key="timeout" value="600000" />
+					<entry key="businesslogicRef" value="nenov.cs4027.assessment.tourismagency.TourismAgency" />
+					<entry key="logLevel" value="INFO" />
+				</map>
+			</list>
+		</property>
+		<property name="logLevel" value="INFO" />
+	</bean>
+
+
+	<bean name="TourismAgencyBean" class="nenov.cs4027.assessment.tourismagency.TourismAgency" singleton="false">
+		<property name="logLevel" value="INFO" />
+		<property name="name" value="Thompson" />
+		<property name="maxCapacity" value="7" />
+	</bean>
+
+	<bean name="TourismAgencyParticipantBean" class="nenov.cs4027.assessment.tourismagency.TourismAgency" singleton="false">
+		<property name="logLevel" value="INFO" />
+		<property name="name" value="Simpson Travel" />
+		<property name="maxCapacity" value="1" />
+	</bean>
+	
+		<bean name="TourismAgencyParticipantBean1" class="nenov.cs4027.assessment.tourismagency.TourismAgency" singleton="false">
+		<property name="logLevel" value="INFO" />
+		<property name="name" value="Asia Travel" />
+		<property name="maxCapacity" value="1" />
+	</bean>
+
+</beans>

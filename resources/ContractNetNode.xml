@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/JMSMessaging.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+	<import resource="classpath:de/dailab/jiactng/protocol/conf/Protocol.xml" />
+	<import resource="classpath:agents/TicketingCompanies.xml" />
+	<import resource="classpath:agents/TransportCompanies.xml" />
+	<import resource="classpath:agents/TourismAgency.xml" />
+
+	<bean name="ContractNetNode" parent="NodeWithJMX">
+		<property name="agents">
+			<list>
+				<ref bean="TicketingCompany1" />
+				<ref bean="TicketingCompany2" />
+				<ref bean="TicketingCompany3" />
+				<ref bean="TicketingCompany4" />
+				
+				<ref bean="TransportCompany1" />
+				<ref bean="TransportCompany2" />
+				<ref bean="TransportCompany3" />
+				
+				<ref bean="TourismAgencyParticipant" />
+				<ref bean="TourismAgencyParticipant1" />
+				<ref bean="TourismAgency" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

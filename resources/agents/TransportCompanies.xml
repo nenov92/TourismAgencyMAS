@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+	<import resource="classpath:de/dailab/jiactng/protocol/conf/Protocol.xml" />
+
+	<bean name="TransportCompany1" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TransportCompanyProtocolManager" />
+				<ref bean="TransportCompany1Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+
+	<bean name="TransportCompany2" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TransportCompanyProtocolManager" />
+				<ref bean="TransportCompany2Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+
+	<bean name="TransportCompany3" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TransportCompanyProtocolManager" />
+				<ref bean="TransportCompany3Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+
+	<bean name="TransportCompanyProtocolManager" parent="ProtocolManagementBean" singleton="false">
+		<property name="definedHandlers">
+			<list>
+				<map>
+					<entry key="protocolname" value="cnptest" />
+					<entry key="handlerclass" value="nenov.cs4027.assessment.transportcompany.TransportCompanyHandleCNP" />
+					<entry key="role" value="participant" />
+					<entry key="timeout" value="600000" />
+					<entry key="businesslogicRef" value="nenov.cs4027.assessment.transportcompany.TransportCompany" />
+					<entry key="logLevel" value="INFO" />
+				</map>
+			</list>
+		</property>
+		<property name="logLevel" value="INFO" />
+	</bean>
+
+	<bean name="TransportCompany1Bean" class="nenov.cs4027.assessment.transportcompany.TransportCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="Megabus" />
+		<property name="capacity" value="5" />
+		<property name="price" value="50" />
+	</bean>
+	
+	<bean name="TransportCompany2Bean" class="nenov.cs4027.assessment.transportcompany.TransportCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="NationalExpress" />
+		<property name="capacity" value="5" />
+		<property name="price" value="70" />
+	</bean>
+	
+	<bean name="TransportCompany3Bean" class="nenov.cs4027.assessment.transportcompany.TransportCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="FirstGroup" />
+		<property name="capacity" value="10" />
+		<property name="price" value="150" />
+	</bean>
+
+</beans>

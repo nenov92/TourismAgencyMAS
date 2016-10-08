@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+	<import resource="classpath:de/dailab/jiactng/protocol/conf/Protocol.xml" />
+
+	<bean name="TicketingCompany1" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TicketingCompanyProtocolManager" />
+				<ref bean="TicketingCompany1Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+	
+	<bean name="TicketingCompany2" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TicketingCompanyProtocolManager" />
+				<ref bean="TicketingCompany2Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+	
+	<bean name="TicketingCompany3" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TicketingCompanyProtocolManager" />
+				<ref bean="TicketingCompany3Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+	
+	<bean name="TicketingCompany4" parent="SimpleAgent" singleton="false">
+		<property name="agentBeans">
+			<list>
+				<ref bean="TicketingCompanyProtocolManager" />
+				<ref bean="TicketingCompany4Bean" />
+			</list>
+		</property>
+		<property name="communication">
+			<ref bean="CommunicationBean" />
+		</property>
+	</bean>
+
+	<bean name="TicketingCompanyProtocolManager" parent="ProtocolManagementBean" singleton="false">
+		<property name="definedHandlers">
+			<list>
+				<map>
+					<entry key="protocolname" value="cnptest" />
+					<entry key="handlerclass" value="nenov.cs4027.assessment.ticketingcompany.TicketingCompanyHandleCNP" />
+					<entry key="role" value="participant" />
+					<entry key="timeout" value="600000" />
+					<entry key="businesslogicRef" value="nenov.cs4027.assessment.ticketingcompany.TicketingCompany" />
+					<entry key="logLevel" value="INFO" />
+				</map>
+			</list>
+		</property>
+		<property name="logLevel" value="INFO" />
+	</bean>
+
+	<bean name="TicketingCompany1Bean" class="nenov.cs4027.assessment.ticketingcompany.TicketingCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="TicketMaster" />
+		<property name="capacity" value="5" />
+		<property name="price" value="50" />
+	</bean>
+	
+	
+	<bean name="TicketingCompany2Bean" class="nenov.cs4027.assessment.ticketingcompany.TicketingCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="TicketPro" />
+		<property name="capacity" value="3" />
+		<property name="price" value="27" />
+	</bean>
+	
+	
+	<bean name="TicketingCompany3Bean" class="nenov.cs4027.assessment.ticketingcompany.TicketingCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="Eventbrite" />
+		<property name="capacity" value="10" />
+		<property name="price" value="95" />
+	</bean>
+	
+	<bean name="TicketingCompany4Bean" class="nenov.cs4027.assessment.ticketingcompany.TicketingCompany" singleton="true">
+		<property name="logLevel" value="INFO" />
+		<property name="companyName" value="Eventim" />
+		<property name="capacity" value="6" />
+		<property name="price" value="60" />
+	</bean>
+</beans>
