@@ -1,3 +1,5 @@
+Fourth year Agent-Based Computing assignment.
+
 ***********************************
 * Instructions to run the project *
 ***********************************
@@ -19,7 +21,7 @@ II. To run the project, please select the NodeStarter.java in nenov.cs4027.asses
 *          Configurations         *
 ***********************************
 
-Òicketing companies have capacity and price properties which can be configured in resources/agents/TicketingCompanies.xml
+Ã’icketing companies have capacity and price properties which can be configured in resources/agents/TicketingCompanies.xml
 
 Transport companies have capacity and price properties which can be configured in resources/agents/TransportCompanies.xml
 
